@@ -25,18 +25,24 @@ export default function Stopwatch() {
   };
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 2 · useRef</h2>
-      <h3>Time: {seconds}s</h3>
-      <button type="button" onClick={handleStart}>
-        Start
-      </button>
-      <button type="button" onClick={handleStop} style={{ marginLeft: '0.5rem' }}>
-        Stop
-      </button>
-      <button type="button" onClick={handleReset} style={{ marginLeft: '0.5rem' }}>
-        Reset
-      </button>
+    <section>
+      <p className="badge">Section 2 · useRef</p>
+      <h2>Stopwatch</h2>
+      <div className="panel" style={{ textAlign: 'center' }}>
+        <p style={{ margin: 0, fontSize: '3rem', fontWeight: 700 }}>{seconds}s</p>
+        <small style={{ color: 'var(--text-muted)' }}>Interval ID lưu bằng useRef nên không gây re-render.</small>
+      </div>
+      <div className="button-row">
+        <button type="button" className="btn" onClick={handleStart}>
+          Start
+        </button>
+        <button type="button" className="btn secondary" onClick={handleStop}>
+          Stop
+        </button>
+        <button type="button" className="btn secondary" onClick={handleReset}>
+          Reset
+        </button>
+      </div>
     </section>
   );
 }

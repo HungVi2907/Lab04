@@ -13,15 +13,16 @@ export default function InputPlayground() {
   };
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 7 · Custom Hook</h2>
+    <section>
+      <p className="badge">Section 7 · Custom Hook</p>
+      <h2>Input Playground</h2>
       <p>{submittedText}</p>
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', maxWidth: '320px' }}>
+      <div className="form-panel" style={{ display: 'grid', gap: '0.75rem', maxWidth: '360px' }}>
         <input type="email" placeholder="Email" value={email.value} onChange={email.onChange} />
         <input type="password" placeholder="Password" value={password.value} onChange={password.onChange} />
         <input type="text" placeholder="Nickname" value={nickname.value} onChange={nickname.onChange} />
       </div>
-      <button type="button" onClick={handleReset} style={{ marginTop: '0.75rem' }}>
+      <button type="button" className="btn secondary" onClick={handleReset} style={{ marginTop: '0.75rem' }}>
         Reset
       </button>
     </section>

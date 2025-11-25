@@ -14,10 +14,14 @@ export default function WindowResizer() {
   }, []);
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 1 · useEffect</h2>
-      <p>Resize the browser window to watch the value update in real time.</p>
-      <h3>Window Width: {windowWidth}px</h3>
+    <section>
+      <p className="badge">Section 1 · useEffect</p>
+      <h2 className="gradient-text">Window Resizer</h2>
+      <p>Resize trình duyệt để thấy state đồng bộ với hệ thống bên ngoài.</p>
+      <div className="panel" style={{ marginTop: '1rem', textAlign: 'center' }}>
+        <p style={{ margin: 0, fontSize: '3rem', fontWeight: 700 }}>{windowWidth}</p>
+        <small style={{ color: 'var(--text-muted)' }}>pixels</small>
+      </div>
     </section>
   );
 }

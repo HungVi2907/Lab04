@@ -4,10 +4,18 @@ export default function ProductDetail() {
   const { id } = useParams();
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 5 · Product Detail</h2>
-      <p>Viewing Product ID: {id}</p>
-      <Link to="/products">Back to products</Link>
+    <section>
+      <p className="badge">Section 5 · Product Detail</p>
+      <h2>Product #{id}</h2>
+      <p>Hook <code>useParams</code> đọc tham số động ngay trên URL.</p>
+      <div className="panel">
+        <p style={{ margin: 0 }}>Trong app thực tế bạn sẽ gọi API theo ID này.</p>
+      </div>
+      <div className="button-row">
+        <Link className="btn secondary" to="/products">
+          ← Back to products
+        </Link>
+      </div>
     </section>
   );
 }

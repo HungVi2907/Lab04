@@ -7,25 +7,29 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Dashboard</h1>
-      <button onClick={() => navigate('/')}>Logout</button>
-      <hr />
+    <main className="section-stack" style={{ paddingTop: '3rem' }}>
+      <section>
+        <p className="badge">Mini project · Step 2</p>
+        <div className="button-row" style={{ justifyContent: 'space-between', alignItems: 'center' }}>
+          <h1 style={{ margin: 0 }}>Dashboard</h1>
+          <button type="button" className="btn secondary" onClick={() => navigate('/')}>Logout</button>
+        </div>
+        <p>User list được tải thông qua custom hook <code>useFetch</code>.</p>
 
-      <h3>User List (Fetched via custom hook)</h3>
+        {loading && <p>Loading data...</p>}
+        {error && <p style={{ color: '#f87171' }}>Error: {error.message}</p>}
 
-      {loading && <p>Loading data...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error.message}</p>}
-
-      {data && (
-        <ul>
-          {data.map((user) => (
-            <li key={user.id}>
-              <strong>{user.name}</strong> - {user.email}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+        {data && (
+          <ul className="list-clean panel">
+            {data.map((user) => (
+              <li key={user.id} style={{ padding: '0.75rem 0', borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+                <strong>{user.name}</strong>
+                <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>{user.email}</p>
+              </li>
+            ))}
+          </ul>
+        )}
+      </section>
+    </main>
   );
 }

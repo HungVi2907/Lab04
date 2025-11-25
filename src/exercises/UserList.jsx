@@ -38,14 +38,19 @@ export default function UserList() {
   }, []);
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 3 · Data Fetching</h2>
+    <section>
+      <p className="badge">Section 3 · Data Fetching</p>
+      <h2>Remote User List</h2>
+      <p>Hook quản lý loading/data/error để UI luôn phản hồi.</p>
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: 'red' }}>Error: {error}</p>}
+      {error && <p style={{ color: '#f87171' }}>Error: {error}</p>}
       {users && (
-        <ul>
+        <ul className="list-clean panel">
           {users.map((user) => (
-            <li key={user.id}>{user.name}</li>
+            <li key={user.id}>
+              <strong>{user.name}</strong>
+              <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>{user.email}</p>
+            </li>
           ))}
         </ul>
       )}

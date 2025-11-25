@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 
 const sections = [
@@ -12,17 +13,46 @@ const sections = [
   { path: '/dashboard', label: 'Mini Project · Dashboard' },
 ];
 
+const accentPalette = ['var(--accent-1)', 'var(--accent-2)', 'var(--accent-3)', 'var(--accent-4)'];
+
 export default function ExerciseMenu() {
+  const hour = new Date().getHours();
+  const greeting = hour < 12 ? 'Chào buổi sáng ☕' : hour < 18 ? 'Buổi chiều năng động ☀️' : 'Buổi tối sáng tạo 🌙';
+  const todaysFocus = useMemo(() => sections[Math.floor(Math.random() * sections.length)].label, []);
+
   return (
-    <main style={{ padding: '2rem', maxWidth: '640px', margin: '0 auto' }}>
-      <h1>Lab 4 · Practice Hub</h1>
-      <p>Pick a section to focus on a single React concept before combining them.</p>
-      <ol style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-        {sections.map((section) => (
-          <li key={section.path}>
-            <Link to={section.path}>{section.label}</Link>
-          </li>
-        ))}
+    <main className="section-stack">
+      <header className="card">
+        <p className="badge">{greeting}</p>
+        <h1 className="gradient-text" style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>
+          Lab 4 · Practice Hub
+        </h1>
+        <p>Ôn từng khái niệm riêng lẻ, sau đó quay lại mini-project để ghép chúng lại.</p>
+        <div className="panel" style={{ marginTop: '1.5rem' }}>
+          <strong>Gợi ý hôm nay:</strong>
+          <p style={{ margin: '0.35rem 0 0' }}>{todaysFocus}</p>
+        </div>
+      </header>
+
+      <ol className="menu-grid">
+        {sections.map((section, index) => {
+          const accent = accentPalette[index % accentPalette.length];
+          const cardStyle = {
+            borderColor: `${accent}44`,
+            background: `linear-gradient(135deg, rgba(15,23,42,0.9), ${accent}33)`,
+          };
+          return (
+            <li key={section.path}>
+              <Link className="menu-card" style={cardStyle} to={section.path}>
+                <p className="badge" style={{ marginBottom: '0.75rem', borderColor: `${accent}66` }}>
+                  Section {index + 1}
+                </p>
+                <h3 style={{ margin: 0 }}>{section.label}</h3>
+                <p style={{ margin: '0.5rem 0 0' }}>Nhấp để mở bài tập.</p>
+              </Link>
+            </li>
+          );
+        })}
       </ol>
     </main>
   );

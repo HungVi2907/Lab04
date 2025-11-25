@@ -5,7 +5,7 @@ export default function ThemeButton() {
   const toggleTheme = () => setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
 
   return (
-    <button type="button" onClick={toggleTheme}>
+    <button type="button" className="btn" onClick={toggleTheme}>
       Toggle Theme (current: {theme})
     </button>
   );

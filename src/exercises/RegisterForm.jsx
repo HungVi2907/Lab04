@@ -21,27 +21,30 @@ export default function RegisterForm() {
   };
 
   return (
-    <section style={{ padding: '1.5rem' }}>
-      <h2>Section 4 · Controlled Form</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={formData.email}
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={formData.password}
-          onChange={handleChange}
-          required
-          style={{ marginLeft: '0.5rem' }}
-        />
-        <button type="submit" style={{ marginLeft: '0.5rem' }}>
+    <section>
+      <p className="badge">Section 4 · Controlled Form</p>
+      <h2>Register Form</h2>
+      <p>State React kiểm soát value nên validate được ngay lập tức.</p>
+      <form className="form-panel" onSubmit={handleSubmit}>
+        <div style={{ display: 'grid', gap: '0.75rem' }}>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit" className="btn" style={{ marginTop: '1rem' }}>
           Register
         </button>
       </form>

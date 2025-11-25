@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import './styles.css';
 import WindowResizer from './exercises/WindowResizer';
 import Stopwatch from './exercises/Stopwatch';
 import UserList from './exercises/UserList';
@@ -29,6 +30,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className="app-shell">
+      <RouterProvider router={router} />
+    </div>
   </React.StrictMode>
 );
